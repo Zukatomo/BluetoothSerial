@@ -33,17 +33,20 @@
 #define LAIRD_CHAR_TX_UUID                       "569a2000-b87f-490c-92cb-11ba5ea5167c"
 #define LAIRD_CHAR_RX_UUID                       "569a2001-b87f-490c-92cb-11ba5ea5167c"
 
+// EC_BM582
+#define EC_BM582_SERVICE_UUID                    "18f0"
+#define EC_BM582_CHAR_TX_UUID                    "2af0"
+#define EC_BM582_CHAR_RX_UUID                    "2af1"
+
+// ZEBRA Printer
+#define ZEBRA_SERVICE_UUID                    "38eb4a80-c570-11e3-9507-0002a5d5c51b"
+#define ZEBRA_CHAR_TX_UUID                    "38eb4a82-c570-11e3-9507-0002a5d5c51b"
+#define ZEBRA_CHAR_RX_UUID                    "38eb4a81-c570-11e3-9507-0002a5d5c51b"
+
 // HM-10 (unfortunately this is also the UUID for the TI simple key service)
 // http://processors.wiki.ti.com/index.php/SensorTag_User_Guide#Simple_Key_Service
 #define HM10_SERVICE_UUID                       "ffe0"
 #define HM10_CHAR_TX_UUID                       "ffe1"
 #define HM10_CHAR_RX_UUID                       "ffe1"
-
-// HC-02
-// http://www.hc01.com/productdetail?productid=20180314021
-#define HC02_SERVICE_UUID "49535343-FE7D-4AE5-8FA9-9FAFD205E455"
-#define HC02_CHAR_TX_UUID "49535343-1E4D-4BD9-BA61-23C647249616"
-#define HC02_CHAR_RX_UUID "49535343-8841-43F4-A8D4-ECBE34729BB3"
-#define HC02_ADV_UUID "18F0"
 
 #define RBL_BLE_FRAMEWORK_VER                    0x0200
