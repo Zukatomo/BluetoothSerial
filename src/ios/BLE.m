@@ -30,8 +30,8 @@ CBUUID *adafruitServiceUUID;
 CBUUID *lairdServiceUUID;
 CBUUID *blueGigaServiceUUID;
 CBUUID *hm10ServiceUUID;
-CBUUID *hc02ServiceUUID;
-CBUUID *hc02AdvUUID;
+CBUUID *ec582bmServiceUUID;
+CBUUID *zebraServiceUUID;
 CBUUID *serialServiceUUID;
 CBUUID *readCharacteristicUUID;
 CBUUID *writeCharacteristicUUID;
@@ -214,12 +214,11 @@ CBUUID *writeCharacteristicUUID;
     redBearLabsServiceUUID = [CBUUID UUIDWithString:@RBL_SERVICE_UUID];
     adafruitServiceUUID = [CBUUID UUIDWithString:@ADAFRUIT_SERVICE_UUID];
     lairdServiceUUID = [CBUUID UUIDWithString:@LAIRD_SERVICE_UUID];
+    ec582bmServiceUUID = [CBUUID UUIDWithString:@EC_BM582_SERVICE_UUID];
+    zebraServiceUUID = [CBUUID UUIDWithString:@ZEBRA_SERVICE_UUID];
     blueGigaServiceUUID = [CBUUID UUIDWithString:@BLUEGIGA_SERVICE_UUID];
     hm10ServiceUUID = [CBUUID UUIDWithString:@HM10_SERVICE_UUID];
-    hc02ServiceUUID = [CBUUID UUIDWithString:@HC02_SERVICE_UUID];
-    hc02AdvUUID = [CBUUID UUIDWithString:@HC02_ADV_UUID];
-    NSArray *services = @[redBearLabsServiceUUID, adafruitServiceUUID, lairdServiceUUID, blueGigaServiceUUID, hm10ServiceUUID, 
-                        hc02AdvUUID];
+    NSArray *services = @[redBearLabsServiceUUID, adafruitServiceUUID, ec582bmServiceUUID, lairdServiceUUID, blueGigaServiceUUID, hm10ServiceUUID];
     [self.CM scanForPeripheralsWithServices:services options: nil];
 #else
     [self.CM scanForPeripheralsWithServices:nil options:nil]; // Start scanning
@@ -562,12 +561,17 @@ static bool done = false;
                 readCharacteristicUUID = [CBUUID UUIDWithString:@HM10_CHAR_TX_UUID];
                 writeCharacteristicUUID = [CBUUID UUIDWithString:@HM10_CHAR_RX_UUID];
                 break;
-            } else if ([service.UUID isEqual:hc02ServiceUUID]) {
-                NSLog(@"HC-02 Bluetooth");
-                NSLog(@"Set HC-02 read write UUID");
-                serialServiceUUID = hc02ServiceUUID;
-                readCharacteristicUUID = [CBUUID UUIDWithString:@HC02_CHAR_TX_UUID];
-                writeCharacteristicUUID = [CBUUID UUIDWithString:@HC02_CHAR_RX_UUID];
+            } else if ([service.UUID isEqual:ec582bmServiceUUID]) {
+                NSLog(@"EC-582BM Bluetooth Printer");
+                serialServiceUUID = ec582bmServiceUUID;
+                readCharacteristicUUID = [CBUUID UUIDWithString:@EC_BM582_CHAR_TX_UUID];
+                writeCharacteristicUUID = [CBUUID UUIDWithString:@EC_BM582_CHAR_RX_UUID];
+                break;
+            } else if ([service.UUID isEqual:zebraServiceUUID]) {
+                NSLog(@"EC-582BM Bluetooth Printer");
+                serialServiceUUID = zebraServiceUUID;
+                readCharacteristicUUID = [CBUUID UUIDWithString:@ZEBRA_CHAR_TX_UUID];
+                writeCharacteristicUUID = [CBUUID UUIDWithString:@ZEBRA_CHAR_RX_UUID];
                 break;
             } else {
                 // ignore unknown services
